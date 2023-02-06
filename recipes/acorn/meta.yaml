@@ -1,0 +1,37 @@
+{% set name = "acorn" %}
+{% set version = "5.3.1" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  url: https://registry.npmjs.org/{{ name }}/-/{{ name }}-{{ version }}.tgz
+  sha256: 6c214bf3ca39b8e50567f01bb5fb8dd8417e9433fbb637e0f8669e82afe333c2
+
+build:
+  number: 0
+  skip: true  # [win]
+
+requirements:
+  host:
+    - nodejs
+    - yarn
+  run:
+    - nodejs
+
+test:
+  commands:
+    - acorn --help
+
+about:
+  home: https://github.com/acornjs/acorn-jsx
+  license: MIT
+  license_file:
+    - LICENSE
+    - ThirdPartyLicenses.txt
+  summary: Node.js native addon build tool
+
+extra:
+  recipe-maintainers:
+    - xhochy
